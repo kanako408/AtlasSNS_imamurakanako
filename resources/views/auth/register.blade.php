@@ -1,29 +1,28 @@
 <x-logout-layout>
     <!-- 適切なURLを入力してください -->
-<!-- {!! Form::open(['url' => '〇〇']) !!} -->
+  <!-- {!! Form::open(['url' => '〇〇']) !!} -->
 
-{!! Form::open(['url' => route('register')]) !!}
-<!-- URLにフォームがPOSTされる -->
+ <!-- {!! Form::open(['url' => route('register')]) !!} -->
+ <form method="POST" action="{{ route('register') }}">
+   <!-- URLにフォームがPOSTされる -->
 
-<h2>新規ユーザー登録</h2>
+   <h2>新規ユーザー登録</h2>
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
+<label for="username">ユーザー名</label>
+    <input type="text" name="username" class="input">
 
-{{ Form::label('メールアドレス') }}
-{{ Form::email('email',null,['class' => 'input']) }}
+    <label for="email">メールアドレス</label>
+    <input type="email" name="email" class="input">
 
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+    <label for="password">パスワード</label>
+    <input type="password" name="password" class="input">
 
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password_confirmation',null,['class' => 'input']) }}
+    <label for="password_confirmation">パスワード確認</label>
+    <input type="password" name="password_confirmation" class="input">
 
-{{ Form::submit('登録') }}
+    <button type="submit">登録</button>
 
-<p><a href="login">ログイン画面へ戻る</a></p>
+    <p><a href="{{ route('login') }}">ログイン画面へ戻る</a></p>
+  </form>
 
-{!! Form::close() !!}
-
-
-</x-logout-layout>
+ </x-logout-layout>

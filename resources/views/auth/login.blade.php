@@ -2,20 +2,20 @@
 
   <!-- 適切なURLを入力してください -->
   <!-- {!! Form::open(['url' => '〇〇']) !!} -->
-   {!! Form::open(['url' => route('login')]) !!}
+   <!-- {!! Form::open(['url' => route('login')]) !!} -->
   <!-- URLにフォームがPOSTされる -->
+  <form method="POST" action="{{ route('login') }}">
 
-  <p>AtlasSNSへようこそ</p>
+   <p>AtlasSNSへようこそ</p>
 
-  {{ Form::label('email') }}
-  {{ Form::text('email',null,['class' => 'input']) }}
-  {{ Form::label('password') }}
-  {{ Form::password('password',['class' => 'input']) }}
+   <label for="email">メールアドレス</label>
+    <input type="text" name="email" class="input">
 
-  {{ Form::submit('ログイン') }}
+    <label for="password">パスワード</label>
+    <input type="password" name="password" class="input">
 
-  <p><a href="register">新規ユーザーの方はこちら</a></p>
+    <button type="submit">ログイン</button>
 
-  {!! Form::close() !!}
-
+    <p><a href="{{ route('register') }}">新規ユーザーの方はこちら</a></p>
+  </form>
 </x-logout-layout>
