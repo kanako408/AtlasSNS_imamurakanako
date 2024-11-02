@@ -5,6 +5,7 @@
    <!-- {!! Form::open(['url' => route('login')]) !!} -->
   <!-- URLにフォームがPOSTされる -->
   <form method="POST" action="{{ route('login') }}">
+    @csrf <!-- CSRFトークンの追加 -->
 
    <p>AtlasSNSへようこそ</p>
 

@@ -21,18 +21,25 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 */
 
 
+// require __DIR__ . '/auth.php';
 
-require __DIR__ . '/auth.php';
+// Route::get('top', [PostsController::class, 'index']);
 
-Route::get('top', [PostsController::class, 'index']);
+// Route::get('profile', [ProfileController::class, 'profile']);
 
-Route::get('profile', [ProfileController::class, 'profile']);
+// Route::get('search', [UsersController::class, 'index']);
 
-Route::get('search', [UsersController::class, 'index']);
+// Route::get('follow-list', [PostsController::class, 'index']);
+// Route::get('follower-list', [PostsController::class, 'index']);
 
-Route::get('follow-list', [PostsController::class, 'index']);
-Route::get('follower-list', [PostsController::class, 'index']);
-
+// 追加: auth ミドルウェアでアクセス制限を設定
+Route::middleware(['auth'])->group(function () {
+    Route::get('top', [PostsController::class, 'index']);
+    Route::get('profile', [ProfileController::class, 'profile']);
+    Route::get('search', [UsersController::class, 'index']);
+    Route::get('follow-list', [PostsController::class, 'index']);
+    Route::get('follower-list', [PostsController::class, 'index']);
+});
 
 // 新規ユーザー登録
 Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
@@ -43,3 +50,7 @@ Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('lo
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
 // 登録ページとログインページへのGETリクエストでフォームを表示し、POSTリクエストで処理が実行
+
+// 新規登録後のページ
+Route::get('added', [RegisteredUserController::class, 'added']);
+// added ページにリダイレクトするため、web.php に added ルートが定義
