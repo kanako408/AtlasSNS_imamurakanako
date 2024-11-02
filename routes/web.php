@@ -34,11 +34,12 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 // 追加: auth ミドルウェアでアクセス制限を設定
 Route::middleware(['auth'])->group(function () {
-    Route::get('top', [PostsController::class, 'index']);
-    Route::get('profile', [ProfileController::class, 'profile']);
-    Route::get('search', [UsersController::class, 'index']);
-    Route::get('follow-list', [PostsController::class, 'index']);
-    Route::get('follower-list', [PostsController::class, 'index']);
+    Route::get('top', [PostsController::class, 'index'])->name('index');
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('search', [UsersController::class, 'index'])->name('search');
+    Route::get('follow-list', [PostsController::class, 'followList'])->name('follow-list');
+    Route::get('follower-list', [PostsController::class, 'followerList'])->name('follower-list');
+    Route::get('users/{user}/profile', [UsersController::class, 'show'])->name('user-profile');
 });
 
 // 新規ユーザー登録
@@ -54,3 +55,7 @@ Route::post('login', [AuthenticatedSessionController::class, 'store']);
 // 新規登録後のページ
 Route::get('added', [RegisteredUserController::class, 'added']);
 // added ページにリダイレクトするため、web.php に added ルートが定義
+
+
+// ログアウトのルート
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
