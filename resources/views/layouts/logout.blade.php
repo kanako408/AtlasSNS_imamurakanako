@@ -33,5 +33,7 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="JavaScriptファイルのURL"></script>
         <script src="JavaScriptファイルのURL"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- CDN経由で読み込む -->
     </body>
 </html>

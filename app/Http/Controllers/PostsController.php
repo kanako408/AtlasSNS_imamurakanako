@@ -18,7 +18,7 @@ class PostsController extends Controller
         // 投稿の登録処理
         Post::create([
             'user_id' => Auth::id(),
-            'content' => $request->content,
+            'post' => $request->content,
         ]);
 
         // トップページにリダイレクト

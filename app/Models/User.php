@@ -32,4 +32,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    //リレーション定義を追加
+    //「１対多」の「多」側 → メソッド名は複数形でhasManyを使う
+    public function posts(){//User.phpにとってpost.phpは「多」
+        return $this->hasMany('App\Models\Post');
+    }
 }
