@@ -56,4 +56,11 @@ public function destroy(Post $post)
     // public function index(){
     //     return view('posts.index');
     // }
+    // 投稿更新
+public function update(Request $request)
+{
+$id = $request->input ('Id');
+$up_post = $request->input('upPost');
+
+}
 }

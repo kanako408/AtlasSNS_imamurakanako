@@ -39,7 +39,7 @@
              <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
             @if($post->user_id === Auth::id())
                 <button type="button" class="delete-button js-delete-modal-open" data-post-id="{{ $post->id }}">
-                    <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash.png'" onmouseout="this.src='/images/trash-h.png'">
+                    <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash-h.png'" onmouseout="this.src='/images/trash.png'">
                 </button>
             @endif
         </div>
@@ -50,8 +50,8 @@
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
            <form action="" method="">
-                <textarea name="" class="modal_post"></textarea>
-                <input type="hidden" name="" class="modal_id" value="">
+                <textarea name="upPost" class="modal_post" value=""></textarea>
+                <input type="hidden" name="Id" class="modal_id" value="">
                 <input type="submit" value="更新">
                 {{ csrf_field() }}
            </form>
