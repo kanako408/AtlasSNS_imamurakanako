@@ -35,7 +35,8 @@ class User extends Authenticatable
 
     //リレーション定義を追加
     //「１対多」の「多」側 → メソッド名は複数形でhasManyを使う
-    public function posts(){//User.phpにとってpost.phpは「多」
+    public function posts()
+    { //User.phpにとってpost.phpは「多」
         return $this->hasMany('App\Models\Post');
     }
 }

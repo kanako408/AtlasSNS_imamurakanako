@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('follow-list', [PostsController::class, 'followList'])->name('follow-list');
     Route::get('follower-list', [PostsController::class, 'followerList'])->name('follower-list');
     Route::get('users/{user}/profile', [UsersController::class, 'show'])->name('user-profile');
-        // 投稿関連のルート
+    // 投稿関連のルート
     Route::resource('posts', PostsController::class);
 });
 
@@ -61,3 +61,7 @@ Route::get('added', [RegisteredUserController::class, 'added']);
 
 // ログアウトのルート
 Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+
+// 編集（update）処理
+Route::post('update',  [PostsController::class, 'update'])->name('update');
