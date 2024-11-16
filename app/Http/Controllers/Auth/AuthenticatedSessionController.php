@@ -31,5 +31,9 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended('top');
     }
-
+    // ログアウトページ
+    public function destroy(): View
+    {
+        return view('auth.login');
+    }
 }

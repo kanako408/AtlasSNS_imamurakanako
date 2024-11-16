@@ -45,4 +45,10 @@ $(function () {
       $('.js-delete-modal').fadeOut(); // モーダルを閉じる
     }
   });
+
+  // アコーディオンメニューの挙動
+  $('.menu-toggle').on('click', function () {
+    $(this).toggleClass('open');
+    $('.menu-content').slideToggle();
+  });
 });

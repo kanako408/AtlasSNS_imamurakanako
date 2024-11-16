@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 // ログイン
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FollowsController;
+
 // 新規ユーザー登録
 
 /*
@@ -37,8 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('top', [PostsController::class, 'index'])->name('index');
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('search', [UsersController::class, 'index'])->name('search');
-    Route::get('follow-list', [PostsController::class, 'followList'])->name('follow-list');
-    Route::get('follower-list', [PostsController::class, 'followerList'])->name('follower-list');
+    Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
+    Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');
     Route::get('users/{user}/profile', [UsersController::class, 'show'])->name('user-profile');
     // 投稿関連のルート
     Route::resource('posts', PostsController::class);

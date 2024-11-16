@@ -1,13 +1,28 @@
         <div id="head">
-            <h1><a><img src="images/atlas.png"></a></h1>
+            <!-- トップページへのリンク設置 -->
+            <h1><a href="{{ route('index') }}" class="logo">
+                    <img src="{{ asset('images/atlas.png') }}"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん</p>
+                    <p>{{ Auth::user()->username }}さん</p>
                 </div>
-                <ul>
-                    <li><a href="">ホーム</a></li>
-                    <li><a href="">プロフィール</a></li>
-                    <li><a href="">ログアウト</a></li>
-                </ul>
+            </div>
+            <!-- アコーディオンメニューの追加 -->
+            <div class="accordion-menu">
+                <button class="menu-toggle">
+                    メニュー <span class="arrow">&#9660;</span>
+                </button>
+                <div class="menu-content">
+                    <ul>
+                        <li><a href="{{ route('index') }}">HOME</a></li>
+                        <li><a href="{{ route('profile') }}">プロフィール編集</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="logout-button">ログアウト</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
