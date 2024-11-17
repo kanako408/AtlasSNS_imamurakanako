@@ -38,6 +38,7 @@ use App\Http\Controllers\FollowsController;
 Route::middleware(['auth'])->group(function () {
     Route::get('top', [PostsController::class, 'index'])->name('index');
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('search', [UsersController::class, 'index'])->name('search');
     Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
     Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');

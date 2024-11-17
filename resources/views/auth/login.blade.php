@@ -2,14 +2,14 @@
 
   <!-- 適切なURLを入力してください -->
   <!-- {!! Form::open(['url' => '〇〇']) !!} -->
-   <!-- {!! Form::open(['url' => route('login')]) !!} -->
+  <!-- {!! Form::open(['url' => route('login')]) !!} -->
   <!-- URLにフォームがPOSTされる -->
   <form method="POST" action="{{ route('login') }}">
     @csrf <!-- CSRFトークンの追加 -->
 
-   <p>AtlasSNSへようこそ</p>
+    <p>AtlasSNSへようこそ</p>
 
-   <label for="email">メールアドレス</label>
+    <label for="email">メールアドレス</label>
     <input type="text" name="email" class="input">
 
     <label for="password">パスワード</label>
