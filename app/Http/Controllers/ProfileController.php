@@ -19,10 +19,10 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
+        // 現在ログインしているユーザーを取得
         $user = Auth::user();
 
         // 入力されたデータで更新
-        $user->id = $request->input('id');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->bio = $request->input('bio');
@@ -43,9 +43,11 @@ class ProfileController extends Controller
             $path = $request->file('icon_image')->store('icons', 'public');
             $user->icon_image = $path;
         }
-
-        $user->save();
         //  データベースの保存
-        return redirect()->route('/top')->with('success', 'プロフィールを更新しました');
+        /** @var \App\Models\User $user */
+        $user->save();
+        // プロフィールページへリダイレクト
+        // return redirect()->route('index');
+        return redirect()->route('profile')->with('success', 'プロフィールを更新しました');
     }
 }

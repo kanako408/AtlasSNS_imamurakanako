@@ -1,6 +1,5 @@
 <x-login-layout>
 
-  @section('content')
   <div class="container">
     <div class="update">
 
@@ -32,15 +31,10 @@
           <input type="email" name="email" id="email" class="form-control" value="{{ old('email', Auth::user()->email) }}" required>
         </div>
 
-        {{-- 自己紹介文 --}}
-        <div class="form-group">
-          <label for="bio">自己紹介文</label>
-          <textarea name="bio" id="bio" class="form-control" maxlength="150">{{ old('bio', Auth::user()->bio) }}</textarea>
-        </div>
 
         {{-- パスワード --}}
         <div class="form-group">
-          <label for="password">新しいパスワード</label>
+          <label for="password">パスワード</label>
           <input type="password" name="password" id="password" class="form-control">
         </div>
 
@@ -48,6 +42,12 @@
         <div class="form-group">
           <label for="password_confirmation">パスワード確認</label>
           <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+        </div>
+
+        {{-- 自己紹介文 --}}
+        <div class="form-group">
+          <label for="bio">自己紹介文</label>
+          <textarea name="bio" id="bio" class="form-control" maxlength="150">{{ old('bio', Auth::user()->bio) }}</textarea>
         </div>
 
         {{-- アイコン画像 --}}
@@ -59,10 +59,9 @@
           @endif
         </div>
 
-        {{-- 保存ボタン --}}
-        <button type="submit" class="btn btn-primary">保存</button>
+        {{-- 更新ボタン --}}
+        <button type="submit" class="btn btn-primary">更新</button>
       </form>
     </div>
   </div>
-  @endsection
 </x-login-layout>
