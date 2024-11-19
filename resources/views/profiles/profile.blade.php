@@ -4,9 +4,14 @@
     <div class="update">
 
       <h1>プロフィール編集</h1>
+      <!-- 成功メッセージの表示 -->
       @if (session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
+      <div class="alert alert-success">
+        {{ session('success') }}
+      </div>
       @endif
+
+      <!-- バリデーションエラーメッセージの表示 -->
       @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -18,7 +23,7 @@
       @endif
       <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
+        <!-- ファイルを送信する機能がある場合にはフォームにenctype属性の設置も必要 -->
         {{-- ユーザー名 --}}
         <div class="form-group">
           <label for="username">ユーザー名</label>

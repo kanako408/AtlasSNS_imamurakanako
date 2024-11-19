@@ -19,8 +19,18 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
+
         // 現在ログインしているユーザーを取得
         $user = Auth::user();
+        // ユーザーが存在するか確認
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'ログインしてください');
+        }
+        // バリデーション済みデータを取得
+        $validated = $request->validated();
+
+        // デバッグ用
+        // dd($validated);
 
         // 入力されたデータで更新
         $user->username = $request->input('username');
