@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('search', [UsersController::class, 'index'])->name('search');
     Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
+    Route::post('/follow/{id}', [FollowsController::class, 'toggleFollow'])->name('follow.toggle');
     Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');
     Route::get('users/{user}/profile', [UsersController::class, 'show'])->name('user-profile');
     // 投稿関連のルート
