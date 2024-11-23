@@ -17,8 +17,8 @@
     <div class="user-list">
       @foreach ($users as $user)
       <div class="user-item">
-        <img src="{{ $user->icon_url }}" alt="{{ $user->name }}" class="user-icon">
-        <p>{{ $user->name }}</p>
+        <img src="{{ $user->icon_url }}" alt="{{ $user->username }}" class="user-icon">
+        <p>{{ $user->username }}</p>
       </div>
       @endforeach
     </div>

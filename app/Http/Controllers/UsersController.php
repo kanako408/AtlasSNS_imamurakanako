@@ -16,12 +16,18 @@ class UsersController extends Controller
 
         // 検索ワードがある場合、部分一致で検索
         if ($request->filled('search')) {
-            $query->where('username', 'like', '%' . $request->input('search') . '%');
+            $query->where(
+                'username',
+                'like',
+                '%' . $request->input('search') . '%'
+            );
         }
-
-        // 自分以外のユーザーを取得
-        $users = $query->where('id', '!=', auth()->id())->get();
-
-        return view('users.search', compact('users'));
+        // 検索結果または全ユーザーを取得
+        $users = $query->get();
+        // 3つ目の処理：リダイレクトでindexのURLを指定して、本の一覧ページを画面表示するルーティング
+        return view(
+            'users.search',
+            ['search' => $users]
+        );
     }
 }
