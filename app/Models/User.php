@@ -62,13 +62,17 @@ class User extends Authenticatable
 
     public function isFollowing(User $user)
     {
-        // フォローしているかを判定
-        return $this->followings()->where('followed_id', $user->id)->exists();
+        return $this->followings->contains($user);
     }
 
     public function isFollowedBy(User $user)
     {
         // フォローされているかを判定
         return $this->followers()->where('following_id', $user->id)->exists();
+    }
+
+    public function getIconUrlAttribute()
+    {
+        return asset('storage/icons/' . $this->icon_image);
     }
 }

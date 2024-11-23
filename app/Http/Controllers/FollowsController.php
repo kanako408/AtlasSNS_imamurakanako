@@ -29,9 +29,7 @@ class FollowsController extends Controller
 
         // フォローしている場合は解除
         if ($authUser->isFollowing($userToFollow)) {
-            Follow::where('following_id', $authUser->id)
-                ->where('followed_id', $userToFollow->id)
-                ->delete();
+            $authUser->followings()->detach($userToFollow->id);
         } else {
             Follow::create([
                 'following_id' => $authUser->id,
