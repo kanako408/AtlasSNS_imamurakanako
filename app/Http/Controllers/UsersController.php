@@ -27,7 +27,7 @@ class UsersController extends Controller
         // 3つ目の処理：リダイレクトでindexのURLを指定して、本の一覧ページを画面表示するルーティング
         return view(
             'users.search',
-            ['search' => $users]
+            ['users' => $users]
         );
     }
 }

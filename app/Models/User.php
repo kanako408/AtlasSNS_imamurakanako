@@ -41,6 +41,12 @@ class User extends Authenticatable
     { //User.phpにとってpost.phpは「多」
         return $this->hasMany('App\Models\Post');
     }
+    // これにより、ビューではそのまま {{ $user->icon_url }} を使用
+    public function getIconUrlAttribute()
+    {
+        return asset('storage/icons/' . $this->icon_image);
+    }
+
     // フォローリスト
     // フォローしているユーザー（自分がフォローしている人）を取得
     public function followings()
@@ -54,25 +60,20 @@ class User extends Authenticatable
         );
     }
 
-    public function followers()
-    {
-        // 自分をフォローしているユーザー
-        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
-    }
+    // public function followers()
+    // {
+    //     // 自分をフォローしているユーザー
+    //     return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
+    // }
 
     public function isFollowing(User $user)
     {
         return $this->followings->contains($user);
     }
 
-    public function isFollowedBy(User $user)
-    {
-        // フォローされているかを判定
-        return $this->followers()->where('following_id', $user->id)->exists();
-    }
-
-    public function getIconUrlAttribute()
-    {
-        return asset('storage/icons/' . $this->icon_image);
-    }
+    // public function isFollowedBy(User $user)
+    // {
+    //     // フォローされているかを判定
+    //     return $this->followers()->where('following_id', $user->id)->exists();
+    // }
 }

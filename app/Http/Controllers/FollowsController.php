@@ -24,19 +24,20 @@ class FollowsController extends Controller
 
     public function toggleFollow($id)
     {
-        $userToFollow = User::findOrFail($id);
-        $authUser = auth()->user();
+        // ログインユーザー
+        $user = auth()->user();
 
-        // フォローしている場合は解除
-        if ($authUser->isFollowing($userToFollow)) {
-            $authUser->followings()->detach($userToFollow->id);
+        // フォローする対象のユーザー
+        $targetUser = User::findOrFail($id);
+
+        if ($user->isFollowing($targetUser)) {
+            // フォローしている場合 → フォロー解除
+            $user->followings()->detach($targetUser->id);
         } else {
-            Follow::create([
-                'following_id' => $authUser->id,
-                'followed_id' => $userToFollow->id,
-            ]);
+            // フォローしていない場合 → フォロー
+            $user->followings()->attach($targetUser->id);
         }
 
-        return redirect()->back();
+        return back()->with('status', 'フォロー状態を変更しました。');
     }
 }
