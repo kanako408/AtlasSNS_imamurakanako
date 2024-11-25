@@ -15,12 +15,12 @@ class Follow extends Model
     // 更新可能なカラムを定義
     protected $fillable = ['following_id', 'followed_id'];
     // フォローしているユーザー
-    public function followingUser()
+    public function follower()
     {
         return $this->belongsTo(User::class, 'following_id');
     }
-    // フォローされているユーザー
-    public function followedUser()
+
+    public function followed()
     {
         return $this->belongsTo(User::class, 'followed_id');
     }

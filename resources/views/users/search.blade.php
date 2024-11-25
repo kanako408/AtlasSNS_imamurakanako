@@ -21,16 +21,13 @@
         <!-- ユーザー名 -->
         <p>{{ $user->username }}</p>
 
-        <!-- フォロー状態に応じてボタンを表示 -->
+        <!--ボタンを表示 -->
         @if (auth()->user()->isFollowing($user))
         <form action="{{ route('follow.toggle', $user->id) }}" method="POST">
           @csrf
-          <button type="submit" class="unfollow-button">フォロー解除</button>
-        </form>
-        @else
-        <form action="{{ route('follow.toggle', $user->id) }}" method="POST">
-          @csrf
-          <button type="submit" class="follow-button">フォローする</button>
+          <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
+            {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
+          </button></button>
         </form>
         @endif
       </div>

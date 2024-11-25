@@ -46,6 +46,11 @@ class User extends Authenticatable
     {
         return asset('storage/icons/' . $this->icon_image);
     }
+    // followsリレーション
+    public function follows()
+    {
+        return $this->hasMany(Follow::class, 'following_id');
+    }
 
     // フォローリスト
     // フォローしているユーザー（自分がフォローしている人）を取得

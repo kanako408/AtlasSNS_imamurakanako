@@ -27,17 +27,17 @@ class FollowsController extends Controller
         // ログインユーザー
         $user = auth()->user();
 
-        // フォローする対象のユーザー
-        $targetUser = User::findOrFail($id);
+        // フォローしているか確認
+        $isFollowing = $user->follows()->where('followed_id', $id)->exists();
 
-        if ($user->isFollowing($targetUser)) {
-            // フォローしている場合 → フォロー解除
-            $user->followings()->detach($targetUser->id);
+        if ($isFollowing) {
+            // フォロー解除
+            $user->follows()->where('followed_id', $id)->delete();
         } else {
-            // フォローしていない場合 → フォロー
-            $user->followings()->attach($targetUser->id);
+            // フォローする
+            $user->follows()->create(['followed_id' => $id]);
         }
 
-        return back()->with('status', 'フォロー状態を変更しました。');
+        return redirect()->back();
     }
 }
