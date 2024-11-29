@@ -29,6 +29,13 @@
             {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
           </button></button>
         </form>
+        @else
+        <form action="{{ route('follow.toggle', $user->id) }}" method="POST">
+          @csrf
+          <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
+            {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
+          </button></button>
+        </form>
         @endif
       </div>
       @endforeach
