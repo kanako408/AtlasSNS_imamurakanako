@@ -27,6 +27,9 @@ class FollowsController extends Controller
         // ログインユーザー
         $user = auth()->user();
 
+        // フォロー対象のユーザーが存在するか確認
+        $targetUser = User::findOrFail($id);
+
         // フォローしているか確認
         $isFollowing = $user->follows()->where('followed_id', $id)->exists();
 
@@ -38,6 +41,7 @@ class FollowsController extends Controller
             $user->follows()->create(['followed_id' => $id]);
         }
 
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->back()->with('success', 'フォロー状態が変更されました');
     }
 }

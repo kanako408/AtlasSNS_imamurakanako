@@ -46,10 +46,10 @@ class User extends Authenticatable
     {
         return asset('storage/icons/' . $this->icon_image);
     }
-    // followsリレーション
+    // followsリレーション: ユーザーがフォローしているユーザーを取得する多対多リレーション。
     public function follows()
     {
-        return $this->hasMany(Follow::class, 'following_id');
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
     }
 
     // フォローリスト

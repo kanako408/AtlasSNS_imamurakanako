@@ -8,11 +8,9 @@
         <img src="{{ asset('images/search.png') }}" alt="検索">
       </button>
     </form>
-
     @if (request('search'))
     <p>検索ワード: "{{ request('search') }}"</p>
     @endif
-
     <div class="user-list">
       @foreach ($users as $user)
       <div class="user-item">
@@ -20,17 +18,16 @@
         <img src="{{ $user->icon_url }}" alt="{{ $user->username }}" class="user-icon">
         <!-- ユーザー名 -->
         <p>{{ $user->username }}</p>
-
         <!--ボタンを表示 -->
         @if (auth()->user()->isFollowing($user))
-        <form action="{{ route('follow.toggle', $user->id) }}" method="POST">
+        <form action="/follow/toggle/{{$user->id}}" method="POST">
           @csrf
           <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
             {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
           </button></button>
         </form>
         @else
-        <form action="{{ route('follow.toggle', $user->id) }}" method="POST">
+        <form action="/follow/toggle/{{$user->id}}" method="POST">
           @csrf
           <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
             {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}

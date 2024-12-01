@@ -10,6 +10,8 @@ class UsersController extends Controller
     //
     public function index(Request $request)
     {
+        // ログイン中のユーザーIDを取得
+        $currentUserId = auth()->id();
 
         // $queryを初期化
         $query = User::query();
@@ -22,9 +24,12 @@ class UsersController extends Controller
                 '%' . $request->input('search') . '%'
             );
         }
+        // ログインユーザーを除外
+        $query->where('id', '!=', $currentUserId);
+
         // 検索結果または全ユーザーを取得
         $users = $query->get();
-        // 3つ目の処理：リダイレクトでindexのURLを指定して、本の一覧ページを画面表示するルーティング
+        // 3つ目の処理：リダイレクトでindexのURLを指定して、ユーザーの一覧ページを画面表示するルーティング
         return view(
             'users.search',
             ['users' => $users]
