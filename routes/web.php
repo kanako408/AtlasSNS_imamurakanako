@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('search', [UsersController::class, 'index'])->name('search');
     Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
+    Route::get('/follows/followList', [PostsController::class, 'show'])->name('follows.followList');
+
     //     {id}: フォロー対象のユーザーID。
     // toggleFollow: フォロー状態を切り替えるメソッド。
     Route::post('/follow/toggle/{id}', [FollowsController::class, 'toggleFollow'])->name('follow.toggle');

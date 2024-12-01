@@ -79,12 +79,12 @@ class PostsController extends Controller
         $following_ids = Auth::user()->follows()->pluck('followed_id');
 
         // フォローしているユーザーの投稿を取得
-        $posts = Post::with('user')->whereIn('user_id', $following_ids)->get();
+        $posts = Post::with('user')->whereIn('user_id', $following_ids)->latest()->get();
 
         // ビューに変数を渡す
         return view('follows.followList', [
             'posts' => $posts, // ここで渡している
-            'followings' => Auth::user()->follows()->get()
+            'followings' => Auth::user()->follows()->get() // フォロー中のユーザー
         ]); // 他の変数も渡す
     }
 }

@@ -49,7 +49,7 @@ class User extends Authenticatable
     // followsリレーション: ユーザーがフォローしているユーザーを取得する多対多リレーション。
     public function follows()
     {
-        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
 
     // フォローリスト

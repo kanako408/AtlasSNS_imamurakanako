@@ -6,6 +6,8 @@ use App\Models\Follow;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class FollowsController extends Controller
 {
     //
@@ -16,10 +18,7 @@ class FollowsController extends Controller
         // / ビューにデータを渡す
         return view('follows.followList', compact('followings', 'user'));
     }
-    public function followerList()
-    {
-        return view('follows.followerList');
-    }
+
 
 
     public function toggleFollow($id)
@@ -32,16 +31,16 @@ class FollowsController extends Controller
 
         // フォローしているか確認
         $isFollowing = $user->follows()->where('followed_id', $id)->exists();
-
+        // detach/attach多対多リレーションにおけるデータの追加・削除
         if ($isFollowing) {
             // フォロー解除
-            $user->follows()->where('followed_id', $id)->delete();
+            $user->follows()->detach($id);
         } else {
             // フォローする
-            $user->follows()->create(['followed_id' => $id]);
+            $user->follows()->attach($id);
         }
 
         // return redirect()->back();
-        return redirect()->back()->with('success', 'フォロー状態が変更されました');
+        return redirect()->route('search');
     }
 }

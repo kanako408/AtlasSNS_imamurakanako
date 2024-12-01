@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-protected $fillable = [
+    protected $fillable = [
         'user_id',
         'post'
     ];
 
-
-     public function user(){//post.phpにとってuser.phpは「１」
+    // 投稿の所有者（ユーザー）を取得
+    public function user()
+    { //post.phpにとってuser.phpは「１」
         return $this->belongsTo('App\Models\User');
     }
 }

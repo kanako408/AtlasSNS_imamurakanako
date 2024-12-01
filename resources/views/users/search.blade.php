@@ -20,14 +20,14 @@
         <p>{{ $user->username }}</p>
         <!--ボタンを表示 -->
         @if (auth()->user()->isFollowing($user))
-        <form action="/follow/toggle/{{$user->id}}" method="POST">
+        <form action="{{ route('follow.toggle', ['id' => $user->id]) }}" method="POST">
           @csrf
           <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
             {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
           </button></button>
         </form>
         @else
-        <form action="/follow/toggle/{{$user->id}}" method="POST">
+        <form action="{{ route('follow.toggle', ['id' => $user->id]) }}" method="POST">
           @csrf
           <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
             {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
