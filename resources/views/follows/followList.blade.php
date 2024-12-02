@@ -14,16 +14,7 @@
     </div>
 
     <!-- フォローしているユーザーの投稿一覧 -->
-    <div class="post-list">
-      @foreach ($posts as $post)
-      <div class="post-item">
-        <p>名前：{{ $post->user->username }}</p>
-        <p>投稿内容：{{ $post->post }}</p>
-        <p>投稿日時：{{ $post->created_at->format('Y-m-d H:i') }}</p>
-      </div>
-      <hr>
-      @endforeach
-    </div>
+
   </div>
 
 </x-login-layout>
