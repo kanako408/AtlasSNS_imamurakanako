@@ -75,16 +75,22 @@ class PostsController extends Controller
     // フォローリストへの投稿表示
     public function show()
     {
-        // フォローしているユーザーのidを取得
+        // ログインユーザーがフォローしているユーザーのIDを取得
         $following_ids = Auth::user()->follows()->pluck('followed_id');
 
-        // フォローしているユーザーの投稿を取得
-        $posts = Post::with('user')->whereIn('user_id', $following_ids)->latest()->get();
+        // フォローしているユーザーの投稿を取得 (投稿者情報を含める)
+        $posts = Post::with('user') // 投稿とユーザー情報を一緒に取得
+            ->whereIn('user_id', $following_ids) // フォローしているユーザーの投稿に絞り込む
+            ->latest() // 投稿日時の降順で取得
+            ->get();
 
-        // ビューに変数を渡す
+        // デバッグ用コード
+        dd($following_ids, $posts);
+
+        // ビューにデータを渡す
         return view('follows.followList', [
-            'posts' => $posts, // ここで渡している
+            'posts' => $posts, // 投稿データ
             'followings' => Auth::user()->follows()->get() // フォロー中のユーザー
-        ]); // 他の変数も渡す
+        ]);
     }
 }
