@@ -84,8 +84,8 @@ class PostsController extends Controller
             ->latest() // 投稿日時の降順で取得
             ->get();
 
-        // デバッグ用コード
-        dd($following_ids, $posts);
+        // // デバッグ用コード
+        // dd($following_ids, $posts);
 
         // ビューにデータを渡す
         return view('follows.followList', [

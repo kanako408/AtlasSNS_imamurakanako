@@ -35,4 +35,15 @@ class UsersController extends Controller
             ['users' => $users]
         );
     }
+
+    public function show($id)
+    {
+        // ユーザー情報を取得
+        $user = User::findOrFail($id);
+
+        // ユーザーの投稿を取得（投稿日時の新しい順）
+        $posts = $user->posts()->latest()->get();
+
+        return view('users.otherprofile', compact('user', 'posts'));
+    }
 }

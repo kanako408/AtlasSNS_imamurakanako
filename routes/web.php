@@ -40,14 +40,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('search', [UsersController::class, 'index'])->name('search');
-    Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
+    // Route::get('follow-list', [FollowsController::class, 'followList'])->name('follow-list');
     Route::get('/follows/followList', [PostsController::class, 'show'])->name('follows.followList');
 
     //     {id}: フォロー対象のユーザーID。
     // toggleFollow: フォロー状態を切り替えるメソッド。
     Route::post('/follow/toggle/{id}', [FollowsController::class, 'toggleFollow'])->name('follow.toggle');
     Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');
-    Route::get('users/{user}/profile', [UsersController::class, 'show'])->name('user-profile');
+    Route::get('/users/{id}', [UsersController::class, 'show'])->name('user-profile');
+    // フォロー / フォロー解除の処理
+    Route::post('/users/{id}/follow', [FollowController::class, 'store'])->name('follow');
+    Route::delete('/users/{id}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
+
     // 投稿関連のルート
     Route::resource('posts', PostsController::class);
 });
