@@ -5,8 +5,10 @@
 
     <div class="post-form">
         <!-- ログインユーザーのアイコンを表示 -->
-        <img src="{{ Auth::user()->icon_path ?? '/path/to/default/icon.png' }}" alt="ユーザーアイコン" class="user-icon">
-
+        <!-- <img src="{{ Auth::user()->icon_path ?? '/path/to/default/icon.png' }}" alt="ユーザーアイコン" class="user-icon"> -->
+        <img src="{{ Auth::user()->getIconUrlAttribute() }}"
+            alt="{{ Auth::user()->username }}"
+            class="user-icon">
         <!-- 投稿フォーム -->
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
@@ -27,7 +29,9 @@
         @foreach($posts as $post)
         <div class="post-item">
             <!-- ユーザーアイコン、名前、投稿内容、日時 -->
-            <img src="{{ $post->user->icon_path ?? '/path/to/default/icon.png' }}" alt="アイコン" class="user-icon">
+            <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+                alt="{{ $post->user->username }}"
+                class="user-icon">
             <p>{{ $post->user->username }}</p>
             <p>{{ $post->post }}</p>
             <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>

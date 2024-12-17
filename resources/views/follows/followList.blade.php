@@ -17,9 +17,12 @@
     <div class="post-list">
       @foreach ($posts as $post)
       <div class="post-item">
-        <p><strong>投稿者:</strong> {{ $post->user->username }}</p>
-        <p><strong>投稿内容:</strong> {{ $post->post }}</p>
-        <p><strong>投稿日:</strong> {{ $post->created_at->format('Y-m-d H:i') }}</p>
+        <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+          alt="{{ $post->user->username }}"
+          class="user-icon">
+        <p>{{ $post->user->username }}</p>
+        <p> {{ $post->post }}</p>
+        <p> {{ $post->created_at->format('Y-m-d H:i') }}</p>
 
       </div>
       <hr>

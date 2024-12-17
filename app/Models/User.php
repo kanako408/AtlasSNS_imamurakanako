@@ -44,7 +44,12 @@ class User extends Authenticatable
     // これにより、ビューではそのまま {{ $user->icon_url }} を使用
     public function getIconUrlAttribute()
     {
-        return asset('storage/icons/' . $this->icon_image);
+        // 存在する場合はその画像を表示
+        // 存在しない場合（null や空文字）はデフォルト画像 default-icon.png を返す。
+        // asset() 関数は public ディレクトリを基準としたURLを生成
+        return $this->icon_image
+            ? asset('storage/' . $this->icon_image)
+            : asset('storage/icon1.png');
     }
     // followsリレーション: ユーザーがフォローしているユーザーを取得する多対多リレーション。
     public function follows()
@@ -65,11 +70,16 @@ class User extends Authenticatable
         );
     }
 
-    // public function followers()
-    // {
-    //     // 自分をフォローしているユーザー
-    //     return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id');
-    // }
+    // 自分をフォローしているユーザーを取得
+    public function followers()
+    {
+        return $this->belongsToMany(
+            User::class, // 関連付け先のモデル
+            'follows',   // 中間テーブル名
+            'followed_id', // 自分のIDが保存されているカラム
+            'following_id' // フォローしているユーザーのID
+        );
+    }
 
     public function isFollowing(User $user)
     {

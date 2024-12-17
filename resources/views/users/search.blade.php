@@ -15,7 +15,7 @@
       @foreach ($users as $user)
       <div class="user-item">
         <!-- ユーザーのアイコン -->
-        <img src="{{ $user->icon_url }}" alt="{{ $user->username }}" class="user-icon">
+        <img src="{{ $user->getIconUrlAttribute() }}" alt="{{ $user->username }}" class="user-icon">
         <!-- ユーザー名 -->
         <p>{{ $user->username }}</p>
         <!--ボタンを表示 -->

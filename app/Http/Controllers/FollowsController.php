@@ -43,4 +43,23 @@ class FollowsController extends Controller
         // return redirect()->back();
         return redirect()->route('search');
     }
+    // フォロワーリスト
+    public function followerList()
+    {
+        // 現在のログインユーザー
+        $user = auth()->user();
+
+        // 自分をフォローしているユーザー一覧を取得
+        $followers = $user->followers;
+
+        // フォロワーの投稿一覧を取得（投稿の新しい順に並べる）
+        $posts = collect(); // 初期化
+        foreach ($followers as $follower) {
+            $posts = $posts->merge($follower->posts()->latest()->get());
+        }
+
+
+        // ビューにデータを渡す
+        return view('follows.followerList', compact('followers', 'posts', 'user'));
+    }
 }

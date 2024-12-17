@@ -2,7 +2,7 @@
   <div class="container">
     <!-- ユーザー情報 -->
     <div class="user-info">
-      <img src="{{ $user->icon_url }}" alt="{{ $user->username }}" class="user-icon">
+      <img src="{{ $user->getIconUrlAttribute()}}" alt="{{ $user->username }}" class="user-icon">
       <h2>ユーザー名: {{ $user->username }}</h2>
       <p>自己紹介: {{ $user->bio }}</p>
     </div>

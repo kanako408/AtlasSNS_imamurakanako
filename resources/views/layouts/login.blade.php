@@ -37,26 +37,29 @@
       <div id="confirm">
         <p>{{ Auth::user()->username }}さんの</p>
         <div>
-          <p>フォロー数</p>
-          <p>名</p>
+          <!-- フォロー数表示 -->
+          <div>
+            <p>フォロー数</p>
+            <p>{{ Auth::user()->followings()->count() }}名</p>
+          </div>
+          <p class="btn"><a href="{{ route('follows.followList') }}">フォローリスト</a></p>
+          <!-- フォロワー数表示 -->
+          <div>
+            <p>フォロワー数</p>
+            <p>{{ Auth::user()->followers()->count() }}名</p>
+          </div>
+          <p class="btn"><a href="{{ route('follower-list') }}">フォロワーリスト</a></p>
         </div>
-        <p class="btn"><a href="{{ route('follows.followList') }}">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>名</p>
-        </div>
-        <p class="btn"><a href="{{ route('follower-list') }}">フォロワーリスト</a></p>
+        <p class="btn"><a href="{{ route('search') }}">ユーザー検索</a></p>
       </div>
-      <p class="btn"><a href="{{ route('search') }}">ユーザー検索</a></p>
     </div>
-  </div>
-  <footer>
-  </footer>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- CDN経由で読み込む -->
+    <footer>
+    </footer>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="JavaScriptファイルのURL"></script>
+    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- CDN経由で読み込む -->
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <!-- JavaScriptファイルのリンクを設置 -->
