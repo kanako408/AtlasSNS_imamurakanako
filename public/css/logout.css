@@ -1,10 +1,17 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+/* body{
     height: 100%;
     background: #186AC9;
+} */
+/* rogin背景 */
+body {
+    height: 100%;
+    background: linear-gradient(to bottom, #6ec1e4, #fbe850) !important;
+    margin: 0;
+    padding: 0;
 }
