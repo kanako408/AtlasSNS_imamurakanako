@@ -9,6 +9,7 @@
       <!-- フォーム部分 -->
       <div class="login-form">
         <p>AtlasSNSへようこそ</p>
+        <!-- URLにフォームがPOSTされる -->
         <form method="POST" action="{{ route('login') }}">
           @csrf <!-- CSRFトークンの追加 -->
 
