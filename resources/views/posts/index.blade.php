@@ -13,7 +13,7 @@
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="content">投稿内容</label>
+                <!-- <label for="content">投稿内容</label> -->
                 <textarea name="content" id="content" rows="3" class="form-control" placeholder="投稿内容を入力してください" required></textarea>
             </div>
 
@@ -28,24 +28,37 @@
     <div class="post-list">
         @foreach($posts as $post)
         <div class="post-item">
-            <!-- ユーザーアイコン、名前、投稿内容、日時 -->
-            <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
-                alt="{{ $post->user->username }}"
-                class="user-icon">
-            <p>{{ $post->user->username }}</p>
-            <p>{{ $post->post }}</p>
-            <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
+            <div class="post-item post-block">
+                <!-- ユーザーアイコン -->
+                <figure>
+                    <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+                        alt="{{ $post->user->username }}"
+                        class="user-icon">
+                </figure>
 
-            <!-- 投稿編集ボタン（自分の投稿のみ表示） -->
-            @if($post->user_id === Auth::id())
-            <a class="js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">編集</a>
-            @endif
-            <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
-            @if($post->user_id === Auth::id())
-            <button type="button" class="delete-button js-delete-modal-open" data-post-id="{{ $post->id }}">
-                <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash-h.png'" onmouseout="this.src='/images/trash.png'">
-            </button>
-            @endif
+                <!-- 投稿内容 -->
+                <div class="post-content">
+                    <!-- ユーザー名と日時 -->
+                    <div>
+                        <div class="post-name">{{ $post->user->username }}</div>
+                        <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
+                    </div>
+                    <!-- 投稿内容 -->
+                    <div>{{ $post->post }}</div>
+                </div>
+
+                <!-- 投稿編集ボタン（自分の投稿のみ表示） -->
+                @if($post->user_id === Auth::id())
+                <a class="js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
+                    編集</a>
+                @endif
+                <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
+                @if($post->user_id === Auth::id())
+                <button type="button" class="delete-button js-delete-modal-open" data-post-id="{{ $post->id }}">
+                    <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash-h.png'" onmouseout="this.src='/images/trash.png'">
+                </button>
+                @endif
+            </div>
         </div>
         @endforeach
 

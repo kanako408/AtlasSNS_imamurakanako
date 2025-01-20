@@ -4,11 +4,26 @@
     height: 100%;
 } */
 
+header {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 3rem;
+}
+
 body {
     height: 100%;
-    background: #6ec1e4;
-    background-image: linear-gradient(#6ec1e4 0%, #fbe850 100%);
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #0086d4, #fbe850);
+    background-size: cover;
+    /* 背景を全体に広げる */
+    background-attachment: fixed;
+    /* スクロールしても背景を固定 */
     font-family: 'Arial', sans-serif;
+    color: white;
 }
 
 /* ログインページの中央コンテナ */
@@ -17,7 +32,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     text-align: center;
 }
 
@@ -37,19 +51,17 @@ body {
 
 /* フォーム部分 */
 .login-form {
-    /* margin-bottom: 20px; */
-    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    background-color: rgba(85, 85, 85, 0.2);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
 }
 
 .login-form label {
     display: block;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
-    color: #333;
     text-align: left;
 }
 
@@ -60,6 +72,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    color: black;
 }
 
 .login-form button {
@@ -71,6 +84,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 50%;
+
+
+
 }
 
 .login-form button:hover {
@@ -80,7 +96,6 @@ body {
 .login-form a {
     display: inline-block;
     margin-top: 1rem;
-    color: #2980b9;
     text-decoration: none;
     font-size: 0.9rem;
 }
