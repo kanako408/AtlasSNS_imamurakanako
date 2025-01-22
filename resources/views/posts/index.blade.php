@@ -17,6 +17,7 @@
                 <textarea name="content" id="content" rows="3" class="form-control" placeholder="投稿内容を入力してください" required></textarea>
             </div>
 
+
             <!-- 投稿ボタン（画像） -->
             <button type="submit" class="post-button">
                 <img src="/images/post.png" alt="投稿" class="post-image">
@@ -49,8 +50,9 @@
 
                 <!-- 投稿編集ボタン（自分の投稿のみ表示） -->
                 @if($post->user_id === Auth::id())
-                <a class="js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
-                    編集</a>
+                <button type="button" class="edit-button js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
+                    <img src="/images/edit.png" alt="編集" onmouseover="this.src='/images/edit_h.png'" onmouseout="this.src='/images/edit.png'">
+                </button>
                 @endif
                 <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
                 @if($post->user_id === Auth::id())
@@ -72,7 +74,7 @@
                     <input type="submit" value="更新">
                     {{ csrf_field() }}
                 </form>
-                <a class="js-modal-close" href="">閉じる</a>
+                <!-- <a class="js-modal-close" href="">閉じる</a> -->
             </div>
         </div>
 

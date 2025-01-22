@@ -1,26 +1,45 @@
 @charset "utf-8";
 
-/* html {}
+html {}
 
-body {} */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
 
 /* header */
 header {
     background: #186AC9;
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.5rem;
 }
 
 /* main content */
 #row {
     display: flex;
     flex-flow: row wrap;
+    margin: 1rem auto;
+    /* max-width: 1200px; */
 }
 
 #container {
     flex: 0 0 80%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #side-bar {
-    flex: 0 0 19%;
+    /* flex: 0 0 20%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-left: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     border-left: 1px solid #727272;
 }
 
@@ -58,14 +77,15 @@ header {
 .post-block {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    gap: 1rem;
+    /* margin-bottom: 1rem; */
     border-bottom: 1px solid #ccc;
     padding: 1rem 0;
 }
 
 .post-block figure {
     margin: 0;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
 }
 
 .post-block img.user-icon {
@@ -88,6 +108,16 @@ header {
 }
 
 .post-item .delete-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.post-item .edit-button img {
+    width: 40px;
+    height: 40px;
+}
+
+.post-form .post-button img {
     width: 40px;
     height: 40px;
 }

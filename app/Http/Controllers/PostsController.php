@@ -28,16 +28,22 @@ class PostsController extends Controller
     public function index()
     {
         // 投稿一覧を取得する（例: すべての投稿）
-        $posts = Post::latest()->get();
+        // $posts = Post::latest()->get();
 
         // ビューにデータを渡す
-        return view('posts.index', compact('posts'));
-        // // ログインユーザーとそのフォローしているユーザーの投稿を取得
-        // $posts = Post::whereIn('user_id', Auth::user()->following()->pluck('id')->push(Auth::id()))
-        //              ->latest()
-        //              ->get();
-
         // return view('posts.index', compact('posts'));
+        //  auth()->user()->followings()：ログインユーザーとそのフォローしているユーザーの投稿を取得
+        // pluck('id')：フォローしているユーザーのIDだけを抽出します。
+        // push(Auth::id())：自分のIDをリストに追加します。
+        $userIds = auth()->user()->followings()->pluck('users.id'); // フォロー中のユーザーIDを取得
+        $userIds->push(Auth::id()); // 自分のIDを追加
+
+        // whereIn('user_id', ...)：フォローしているユーザーと自分の投稿をフィルタリングします。
+        $posts = Post::whereIn('user_id', $userIds)
+            ->latest()
+            ->get();
+
+        return view('posts.index', compact('posts'));
     }
 
     // 投稿削除

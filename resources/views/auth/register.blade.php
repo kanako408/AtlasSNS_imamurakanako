@@ -12,13 +12,22 @@
           <h2>新規ユーザー登録</h2>
 
           <label for="username">ユーザー名</label>
-          <input type="text" name="username" class="input">
+          <input type="text" name="username" class="input" value="{{ old('username') }}">
+          @error('username')
+          <div class="error">{{ $message }}</div>
+          @enderror
 
           <label for="email">メールアドレス</label>
-          <input type="email" name="email" class="input">
+          <input type="email" name="email" class="input" value="{{ old('email') }}">
+          @error('email')
+          <div class="error">{{ $message }}</div>
+          @enderror
 
           <label for="password">パスワード</label>
           <input type="password" name="password" class="input">
+          @error('password')
+          <div class="error">{{ $message }}</div>
+          @enderror
 
           <label for="password_confirmation">パスワード確認</label>
           <input type="password" name="password_confirmation" class="input">
