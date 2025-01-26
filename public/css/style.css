@@ -10,11 +10,22 @@ body {
 }
 
 /* header */
-header {
-    background: #186AC9;
-    color: #fff;
-    padding: 1rem;
-    font-size: 1.5rem;
+/* ヘッダー全体のスタイル */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0073e6;
+    /* 背景色 */
+    color: white;
+    /* 文字色 */
+}
+
+/* ロゴのスタイル */
+.logo img {
+    height: 50px;
+    display: block;
 }
 
 /* main content */
@@ -34,12 +45,6 @@ header {
 }
 
 #side-bar {
-    /* flex: 0 0 20%;
-    background: #fff;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-left: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     border-left: 1px solid #727272;
 }
 
@@ -63,14 +68,74 @@ header {
     width: 100%;
 }
 
+/* 投稿関連モーダルレイアウト */
 .modal__content {
     background: #fff;
+    padding: 20px;
+    /* 内側の余白を調整 */
+    width: 40%;
+    /* モーダルの幅を調整 */
+    border-radius: 8px;
+    /* 角を丸くする */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* ボックスシャドウを追加 */
     left: 50%;
-    padding: 40px;
-    position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
+    position: absolute;
+    text-align: center;
+    /* 中央寄せ */
+}
+
+.modal__content textarea {
+    width: 100%;
+    /* 幅をモーダルに合わせる */
+    padding: 10px;
+    /* 余白を調整 */
+    font-size: 14px;
+    /* フォントサイズを調整 */
+    border: 1px solid #ccc;
+    /* 枠線 */
+    border-radius: 4px;
+    /* 角を丸くする */
+    resize: none;
+    /* リサイズを無効化 */
+    margin-bottom: 10px;
+    /* 下に余白を追加 */
+}
+
+.modal__content input[type="submit"] {
+    background-color: #186AC9;
+    /* ボタンの背景色 */
+    color: #fff;
+    /* ボタンの文字色 */
+    padding: 10px 20px;
+    /* ボタンの内側の余白 */
+    border: none;
+    /* ボーダーを削除 */
+    border-radius: 4px;
+    /* 角を丸くする */
+    cursor: pointer;
+    /* ポインター表示 */
+    font-size: 14px;
+    /* フォントサイズ */
+}
+
+.modal__content input[type="submit"]:hover {
+    background-color: #145a9e;
+    /* ホバー時の背景色 */
+}
+
+/* ボタン内の画像のスタイル */
+button img {
+    width: 50px;
+    /* 幅を50ピクセルに設定 */
+    height: auto;
+    /* 高さを自動調整 */
+    display: block;
+    /* ブロック要素にすることで、余白を取り除く */
+    margin: 0 auto;
+    /* 中央寄せ */
 }
 
 /* 投稿表示 */
@@ -96,6 +161,7 @@ header {
 
 .post-content {
     flex-grow: 1;
+    width: 80%;
 }
 
 .post-content .post-name {

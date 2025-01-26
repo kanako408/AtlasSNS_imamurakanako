@@ -29,7 +29,8 @@ class FollowsController extends Controller
         // フォロー対象のユーザーが存在するか確認
         $targetUser = User::findOrFail($id);
 
-        // フォローしているか確認
+        // フォローしているか確認,リレーション
+        // where('カラム名', )どれがほしいか、指定したもの
         $isFollowing = $user->follows()->where('followed_id', $id)->exists();
         // detach/attach多対多リレーションにおけるデータの追加・削除
         if ($isFollowing) {

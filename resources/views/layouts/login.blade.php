@@ -50,16 +50,17 @@
           </div>
           <p class="btn"><a href="{{ route('follower-list') }}">フォロワーリスト</a></p>
         </div>
-        <p class="btn"><a href="{{ route('search') }}">ユーザー検索</a></p>
+        <p class="btn"> <a href="{{ route('search') }}">ユーザー検索</a></p>
       </div>
     </div>
-    <footer>
-    </footer>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- CDN経由で読み込む -->
+  </div>
+  <footer>
+  </footer>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="JavaScriptファイルのURL"></script>
+  <script src="JavaScriptファイルのURL"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- CDN経由で読み込む -->
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <!-- JavaScriptファイルのリンクを設置 -->

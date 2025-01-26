@@ -44,13 +44,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/follows/followList', [PostsController::class, 'show'])->name('follows.followList');
 
     //     {id}: フォロー対象のユーザーID。
-    // toggleFollow: フォロー状態を切り替えるメソッド。
+    // toggleFollow: フォロー状態を切り替えるメソッド。// フォロー / フォロー解除の処理
     Route::post('/follow/toggle/{id}', [FollowsController::class, 'toggleFollow'])->name('follow.toggle');
     Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');
     Route::get('/users/{id}', [UsersController::class, 'show'])->name('user-profile');
-    // フォロー / フォロー解除の処理
-    Route::post('/users/{id}/follow', [FollowController::class, 'store'])->name('follow');
-    Route::delete('/users/{id}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
+
+    // Route::post('/users/{id}/follow', [FollowController::class, 'store'])->name('follow');
+    // Route::delete('/users/{id}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
 
     // 投稿関連のルート
     Route::resource('posts', PostsController::class);

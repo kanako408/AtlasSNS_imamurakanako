@@ -1,12 +1,14 @@
-        <div id="head">
+        <div id="head" class="header-container">
             <!-- トップページへのリンク設置 -->
             <h1><a href="{{ route('index') }}" class="logo">
                     <img src="{{ asset('images/atlas.png') }}"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>{{ Auth::user()->username }}さん</p>
-                </div>
+            <!-- ユーザー情報の表示 -->
+            <!-- <div id=""> -->
+            <div class="user-info">
+                <p>{{ Auth::user()->username }}さん</p>
             </div>
+            <!-- </div> -->
+
             <!-- アコーディオンメニューの追加 -->
             <div class="accordion-menu">
                 <button class="menu-toggle">

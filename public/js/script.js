@@ -49,6 +49,6 @@ $(function () {
   // アコーディオンメニューの挙動
   $('.menu-toggle').on('click', function () {
     $(this).toggleClass('open');
-    $('.menu-content').slideToggle();
+    $('.menu-content').slideToggle(); // メニューの開閉
   });
 });

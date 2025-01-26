@@ -42,24 +42,26 @@
                     <!-- ユーザー名と日時 -->
                     <div>
                         <div class="post-name">{{ $post->user->username }}</div>
-                        <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
+
                     </div>
                     <!-- 投稿内容 -->
                     <div>{{ $post->post }}</div>
                 </div>
-
-                <!-- 投稿編集ボタン（自分の投稿のみ表示） -->
-                @if($post->user_id === Auth::id())
-                <button type="button" class="edit-button js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
-                    <img src="/images/edit.png" alt="編集" onmouseover="this.src='/images/edit_h.png'" onmouseout="this.src='/images/edit.png'">
-                </button>
-                @endif
-                <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
-                @if($post->user_id === Auth::id())
-                <button type="button" class="delete-button js-delete-modal-open" data-post-id="{{ $post->id }}">
-                    <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash-h.png'" onmouseout="this.src='/images/trash.png'">
-                </button>
-                @endif
+                <div>
+                    <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
+                    <!-- 投稿編集ボタン（自分の投稿のみ表示） -->
+                    @if($post->user_id === Auth::id())
+                    <button type="button" class="edit-button js-modal-open" href="#" post="{{ $post->post }}" post_id="{{ $post->id }}">
+                        <img src="/images/edit.png" alt="編集" onmouseover="this.src='/images/edit_h.png'" onmouseout="this.src='/images/edit.png'">
+                    </button>
+                    @endif
+                    <!-- 投稿削除ボタン（自分の投稿のみ表示） -->
+                    @if($post->user_id === Auth::id())
+                    <button type="button" class="delete-button js-delete-modal-open" data-post-id="{{ $post->id }}">
+                        <img src="/images/trash.png" alt="削除" onmouseover="this.src='/images/trash-h.png'" onmouseout="this.src='/images/trash.png'">
+                    </button>
+                    @endif
+                </div>
             </div>
         </div>
         @endforeach
@@ -69,9 +71,12 @@
             <div class="modal__bg js-modal-close"></div>
             <div class="modal__content">
                 <form action="{{ route('update') }}" method="POST">
+
                     <textarea name="upPost" class="modal_post" value=""></textarea>
                     <input type="hidden" name="Id" class="modal_id" value="">
-                    <input type="submit" value="更新">
+                    <button type="submit">
+                        <img src="/images/edit.png" alt="更新ボタン">
+                    </button>
                     {{ csrf_field() }}
                 </form>
                 <!-- <a class="js-modal-close" href="">閉じる</a> -->
