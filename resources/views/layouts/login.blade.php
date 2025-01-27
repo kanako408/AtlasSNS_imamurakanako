@@ -38,29 +38,35 @@
         <p>{{ Auth::user()->username }}さんの</p>
         <div>
           <!-- フォロー数表示 -->
-          <div>
+          <div style="display: flex; align-items: center; gap: 50px;">
             <p>フォロー数</p>
             <p>{{ Auth::user()->followings()->count() }}名</p>
           </div>
-          <p class="btn"><a href="{{ route('follows.followList') }}">フォローリスト</a></p>
+          <div class="d-grid gap-2">
+            <a href="{{ route('follows.followList') }}" class="btn btn-primary" role="button">フォローリスト</a>
+          </div>
           <!-- フォロワー数表示 -->
-          <div>
+          <div style="display: flex; align-items: center; gap: 40px;">
             <p>フォロワー数</p>
             <p>{{ Auth::user()->followers()->count() }}名</p>
           </div>
-          <p class="btn"><a href="{{ route('follower-list') }}">フォロワーリスト</a></p>
+          <div class="d-grid gap-2">
+            <a href="{{ route('follower-list') }}" class="btn btn-primary" role="button">フォロワーリスト</a>
+          </div>
         </div>
-        <p class="btn"> <a href="{{ route('search') }}">ユーザー検索</a></p>
       </div>
+      <div class="d-grid gap-2">
+        <a href="{{ route('search') }}" class="btn btn-primary" role="button">ユーザー検索</a>
+      </div>
+
     </div>
-  </div>
-  <footer>
-  </footer>
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- CDN経由で読み込む -->
+    <footer>
+    </footer>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="JavaScriptファイルのURL"></script>
+    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- CDN経由で読み込む -->
 </body>
 <script src="{{ asset('js/script.js') }}"></script>
 <!-- JavaScriptファイルのリンクを設置 -->
