@@ -48,9 +48,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/follow/toggle/{id}', [FollowsController::class, 'toggleFollow'])->name('follow.toggle');
     Route::get('follower-list', [FollowsController::class, 'followerList'])->name('follower-list');
     Route::get('/users/{id}', [UsersController::class, 'show'])->name('user-profile');
-
-    // Route::post('/users/{id}/follow', [FollowController::class, 'store'])->name('follow');
-    // Route::delete('/users/{id}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
+    // 「フォローリスト」や「フォロワーリスト」から他ユーザーのプロフィール画面へ遷移
+    Route::post('/users/{id}/follow', [FollowController::class, 'store'])->name('follow');
+    Route::delete('/users/{id}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
 
     // 投稿関連のルート
     Route::resource('posts', PostsController::class);

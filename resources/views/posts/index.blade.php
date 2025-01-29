@@ -19,9 +19,9 @@
 
 
             <!-- 投稿ボタン（画像） -->
-            <button type="submit" class="post-button">
-                <img src="/images/post.png" alt="投稿" class="post-image">
-            </button>
+            <div><button type="submit" class="post-button">
+                    <img src="/images/post.png" alt="投稿" class="post-image">
+                </button></div>
         </form>
     </div>
 
@@ -39,7 +39,7 @@
 
                 <!-- 投稿内容 -->
                 <div class="post-content">
-                    <!-- ユーザー名と日時 -->
+                    <!-- ユーザー名 -->
                     <div>
                         <div class="post-name">{{ $post->user->username }}</div>
 

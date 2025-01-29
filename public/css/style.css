@@ -203,3 +203,63 @@ button img {
     width: 40px;
     height: 40px;
 }
+
+/* 検索フォームのスタイル */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #007bff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ユーザー一覧 */
+.user-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 子要素（.user-item）を中央に */
+    gap: 15px;
+}
+
+/* ユーザー情報（アイコン、名前、ボタン）を横並びに */
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* ユーザーアイコン */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* ユーザー名 */
+.user-name {
+    flex-grow: 1;
+}

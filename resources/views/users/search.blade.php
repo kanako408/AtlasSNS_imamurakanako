@@ -22,9 +22,11 @@
 
         <form action="{{ route('follow.toggle', ['id' => $user->id]) }}" method="POST">
           @csrf
-          <button type="submit" class="{{ auth()->user()->isFollowing($user) ? 'unfollow-button' : 'follow-button' }}">
-            {{ auth()->user()->isFollowing($user) ? 'フォロー解除' : 'フォローする' }}
-          </button></button>
+          @if(auth()->user()->isFollowing($user))
+          <button type="submit" class="btn btn-danger">フォロー解除</button>
+          @else
+          <button type="submit" class="btn btn-primary">フォローする</button>
+          @endif</button>
         </form>
       </div>
       @endforeach
