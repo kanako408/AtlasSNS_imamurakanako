@@ -1,29 +1,37 @@
 <x-login-layout>
 
-  <div class="container">
-    <div class="update">
+  <!-- <div class="container"> -->
+  <div class="update">
 
-      <h1>プロフィール編集</h1>
-      <!-- 成功メッセージの表示 -->
-      @if (session('success'))
-      <div class="alert alert-success">
-        {{ session('success') }}
-      </div>
-      @endif
+    <!-- <h1>プロフィール編集</h1> -->
+    <!-- 成功メッセージの表示 -->
+    @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+    @endif
 
-      <!-- バリデーションエラーメッセージの表示 -->
-      @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-      @endif
+    <!-- バリデーションエラーメッセージの表示 -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+    <!-- プロフィール編集フォームをカード状のコンテナで囲む -->
+    <div class="profile-card">
       <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <!-- ファイルを送信する機能がある場合にはフォームにenctype属性の設置も必要 -->
+        <!-- ログインユーザーのアイコンを表示 -->
+        <img src="{{ Auth::user()->getIconUrlAttribute() }}"
+          alt="{{ Auth::user()->username }}"
+          class="user-icon">
+
+
         {{-- ユーザー名 --}}
         <div class="form-group">
           <label for="username">ユーザー名</label>
@@ -65,7 +73,7 @@
         </div>
 
         {{-- 更新ボタン --}}
-        <button type="submit" class="btn btn-primary">更新</button>
+        <button type="submit" class="btn btn-danger">更新</button>
       </form>
     </div>
   </div>

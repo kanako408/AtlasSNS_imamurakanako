@@ -41,8 +41,9 @@ class FollowsController extends Controller
             $user->follows()->attach($id);
         }
 
-        // return redirect()->back();
-        return redirect()->route('search');
+        return redirect()->back();
+        // 元のページに戻る
+        // return redirect()->route('search');
     }
     // フォロワーリスト
     public function followerList()

@@ -1,8 +1,10 @@
 <x-login-layout>
 
-  <div class="container">
-    <!-- ① フォロワーのアイコン一覧 -->
+  <!-- ① フォロワーのアイコン一覧 -->
+  <div class="follow">
     <h1>フォロワーリスト</h1>
+
+    <!-- フォローされているユーザーをアイコンで表示 -->
     <div class="follow-icons">
       @foreach ($followers as $follower)
       <!-- プロフィールページへ遷移するリンク -->
@@ -13,32 +15,38 @@
       </a>
       @endforeach
     </div>
+  </div>
 
-    <hr>
-
-    <!-- ② フォロワーの投稿一覧 -->
-    <div class="post-list">
-      @foreach ($posts as $post)
-      <div class="post-item">
+  <!-- ② フォロワーの投稿一覧 -->
+  <div class="post-list">
+    @foreach ($posts as $post)
+    <div class="post-item">
+      <div class="post-item post-block">
         <!-- ユーザーアイコン（プロフィールページへのリンク） -->
-        <a href="{{ route('user-profile', $post->user->id) }}">
-          <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
-            alt="{{ $post->user->username }}"
-            class="user-icon">
-        </a>
+        <figure>
+          <a href="{{ route('user-profile', $post->user->id) }}">
+            <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+              alt="{{ $post->user->username }}"
+              class="user-icon">
+          </a>
+        </figure>
 
-        <!-- ユーザー名 -->
-        <p>{{ $post->user->username }}</p>
-
-        <!-- 投稿内容 -->
-        <p>{{ $post->post }}</p>
-
-        <!-- 投稿日時 -->
-        <p>{{ $post->created_at->format('Y-m-d H:i') }}</p>
+        <!-- 投稿一覧 -->
+        <div class="post-content">
+          <!-- ユーザー名 -->
+          <div>
+            <div class="post-name">{{ $post->user->username }}</div>
+          </div>
+          <!-- 投稿内容 -->
+          <div>{{ $post->post }}</div>
+        </div>
+        <div>
+          <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
+        </div>
       </div>
-      <hr>
-      @endforeach
     </div>
+    @endforeach
+
   </div>
 
 </x-login-layout>

@@ -7,8 +7,17 @@
       <p>自己紹介: {{ $user->bio }}</p>
     </div>
 
-    <!-- フォローボタン -->
-    <div class="follow-button">
+    <!--ボタンを表示 -->
+
+    <form action="{{ route('follow.toggle', ['id' => $user->id]) }}" method="POST">
+      @csrf
+      @if(auth()->user()->isFollowing($user))
+      <button type="submit" class="btn btn-danger">フォロー解除</button>
+      @else
+      <button type="submit" class="btn btn-primary">フォローする</button>
+      @endif</button>
+    </form>
+    <!-- <div class="follow-button">
       @if (Auth::user()->follows()->where('followed_id', $user->id)->exists())
       <form action="{{ route('unfollow', $user->id) }}" method="POST">
         @csrf
@@ -19,19 +28,19 @@
       <form action="{{ route('follow', $user->id) }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary">フォローする</button>
-      </form>
-      @endif
-    </div>
+      </form> -->
+    @endif
+  </div>
 
-    <!-- 投稿一覧 -->
-    <div class="post-list">
-      @foreach ($posts as $post)
-      <div class="post-item">
-        <p><strong>投稿内容:</strong> {{ $post->content }}</p>
-        <p><strong>投稿日:</strong> {{ $post->created_at->format('Y-m-d H:i') }}</p>
-      </div>
-      <hr>
-      @endforeach
+  <!-- 投稿一覧 -->
+  <div class="post-list">
+    @foreach ($posts as $post)
+    <div class="post-item">
+      <p><strong>投稿内容:</strong> {{ $post->content }}</p>
+      <p><strong>投稿日:</strong> {{ $post->created_at->format('Y-m-d H:i') }}</p>
     </div>
+    <hr>
+    @endforeach
+  </div>
   </div>
 </x-login-layout>

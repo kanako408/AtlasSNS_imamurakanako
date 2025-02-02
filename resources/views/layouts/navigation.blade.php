@@ -27,4 +27,9 @@
                     </ul>
                 </div>
             </div>
+            <!-- ログインユーザーのアイコンを表示 -->
+            <!-- <img src="{{ Auth::user()->icon_path ?? '/path/to/default/icon.png' }}" alt="ユーザーアイコン" class="user-icon"> -->
+            <img src="{{ Auth::user()->getIconUrlAttribute() }}"
+                alt="{{ Auth::user()->username }}"
+                class="user-icon">
         </div>

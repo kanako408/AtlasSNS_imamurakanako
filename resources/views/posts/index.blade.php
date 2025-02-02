@@ -6,23 +6,26 @@
     <div class="post-form">
         <!-- ログインユーザーのアイコンを表示 -->
         <!-- <img src="{{ Auth::user()->icon_path ?? '/path/to/default/icon.png' }}" alt="ユーザーアイコン" class="user-icon"> -->
-        <img src="{{ Auth::user()->getIconUrlAttribute() }}"
-            alt="{{ Auth::user()->username }}"
-            class="user-icon">
+        <div><img src="{{ Auth::user()->getIconUrlAttribute() }}"
+                alt="{{ Auth::user()->username }}"
+                class="user-icon"></div>
         <!-- 投稿フォーム -->
-        <form action="{{ route('posts.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <!-- <label for="content">投稿内容</label> -->
-                <textarea name="content" id="content" rows="3" class="form-control" placeholder="投稿内容を入力してください" required></textarea>
-            </div>
+        <div>
+            <form action="{{ route('posts.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <!-- <label for="content">投稿内容</label> -->
+                    <textarea name="content" id="content" rows="3" class="form-control" placeholder="投稿内容を入力してください" required></textarea>
+                </div>
 
+        </div>
 
-            <!-- 投稿ボタン（画像） -->
-            <div><button type="submit" class="post-button">
-                    <img src="/images/post.png" alt="投稿" class="post-image">
-                </button></div>
-        </form>
+        <!-- 投稿ボタン（画像） -->
+        <div><button type="submit" class="post-button">
+                <img src="/images/post.png" alt="投稿" class="post-image">
+            </button>
+            </form>
+        </div>
     </div>
 
 
