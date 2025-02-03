@@ -60,7 +60,7 @@
         {{-- 自己紹介文 --}}
         <div class="form-group">
           <label for="bio">自己紹介文</label>
-          <textarea name="bio" id="bio" class="form-control" maxlength="150">{{ old('bio', Auth::user()->bio) }}</textarea>
+          <textarea name="bio" id="bio" class=".bio-textarea" maxlength="150">{{ old('bio', Auth::user()->bio) }}</textarea>
         </div>
 
         {{-- アイコン画像 --}}
@@ -68,7 +68,7 @@
           <label for="icon_image">アイコン画像</label>
           <input type="file" name="icon_image" id="icon_image" class="form-control">
           @if (Auth::user()->icon_image)
-          <img src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="アイコン画像" class="img-thumbnail mt-2" width="150">
+          <!-- <img src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="アイコン画像" class="img-thumbnail mt-2" width="150"> -->
           @endif
         </div>
 

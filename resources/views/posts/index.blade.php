@@ -40,7 +40,7 @@
                         class="user-icon">
                 </figure>
 
-                <!-- 投稿内容 -->
+                <!-- 投稿一覧 -->
                 <div class="post-content">
                     <!-- ユーザー名 -->
                     <div>
