@@ -241,10 +241,9 @@ button img {
 .post-item .delete-button img,
 .post-item .edit-button img,
 .post-form .post-button img,
-.search-button img,
-{
-width: 40px;
-height: 40px;
+.search-button img {
+    width: 40px;
+    height: 40px;
 }
 
 
@@ -347,8 +346,16 @@ height: 40px;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.update-card {
+
+.update-item {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.update {
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
