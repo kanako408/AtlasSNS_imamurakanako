@@ -20,6 +20,109 @@ body {
     /* 背景色 */
     color: white;
     /* 文字色 */
+    gap: 20px;
+}
+
+/* アコーディオンメニュー */
+.accordion-menu {
+    position: relative;
+    display: inline-block;
+
+}
+
+
+
+.menu-content {
+    position: absolute;
+    /* ヘッダーの外に展開できるように */
+    top: 100%;
+    /* ボタンの下に配置 */
+    background-color: white;
+    /* メニューの背景色を指定 */
+    border: 1px solid #ccc;
+    /* 境界線を追加 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    /* 影をつける */
+    width: 150px;
+    /* 適切な幅を設定 */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    /* 水平方向の中央揃え */
+    /* 他の要素の上に表示 */
+    /* display: none; */
+    /* Hide the menu content initially */
+}
+
+.logout-button {
+    display: block;
+    padding: 8px 16px;
+    border: none;
+    text-decoration: none;
+    color: #333;
+    background-color: white;
+    background: none;
+    border: none;
+    color: #000;
+    /* リンクと同じ色にする */
+    text-decoration: none;
+    /* 下線を消す */
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 8px 16px;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.logout-link:hover {
+    background-color: #f1f1f1;
+    /* ホバー時の効果 */
+}
+
+.menu-group {
+    display: flex;
+    margin: 0 0 0 auto;
+    gap: 20px;
+
+}
+
+
+
+.menu-toggle {
+    background-color: #0073e6;
+    color: white;
+    padding: 5%;
+    /* cursor: pointer; */
+    border: none;
+    /* width: 100%; */
+    text-align: left;
+}
+
+.menu-toggle.open {
+    background-color: #0073e6;
+    /* Darker blue when opened */
+}
+
+
+
+.menu-content ul li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-content ul li a.active {
+    background-color: #007bff;
+    /* Highlight the active link */
+    color: white;
+}
+
+.menu-content ul li a:hover {
+    background-color: #00297e;
+    color: white;
 }
 
 h1 {
@@ -121,6 +224,7 @@ textarea.form-control {
     /* 背景色を透明に設定 */
     color: rgba(48, 151, 209, 0);
     /* 透明 */
+    margin: 0 0 0 auto;
 }
 
 /* 投稿関連モーダルレイアウト */

@@ -46,9 +46,23 @@ $(function () {
     }
   });
 
-  // アコーディオンメニューの挙動
-  $('.menu-toggle').on('click', function () {
-    $(this).toggleClass('open');
-    $('.menu-content').slideToggle(); // メニューの開閉
+  $(document).ready(function () {
+    // Toggle accordion menu
+    // アコーディオンメニューの挙動
+    $('.menu-toggle').on('click', function () {
+      $(this).toggleClass('open');
+      $('.menu-content').slideToggle(); // メニューの開閉
+    });
+    // Highlight active link
+    $('.menu-content ul li a').on('click', function () {
+      $('.menu-content ul li a').removeClass('active'); // Remove active class from all links
+      $(this).addClass('active'); // Add active class to clicked link
+    });
+  });
+});
+
+$(function () {
+  $('a').on('click', function () {
+    return false;
   });
 });
