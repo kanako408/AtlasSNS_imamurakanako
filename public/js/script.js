@@ -52,17 +52,17 @@ $(function () {
     $('.menu-toggle').on('click', function () {
       $(this).toggleClass('open');
       $('.menu-content').slideToggle(); // メニューの開閉
+      // ▼と▲を切り替え
+      if ($(this).hasClass('open')) {
+        $(this).find('.arrow').html('&#923;'); // ▲ に変更
+      } else {
+        $(this).find('.arrow').html('&#8548;'); // ▼ に変更
+      }
     });
     // Highlight active link
     $('.menu-content ul li a').on('click', function () {
       $('.menu-content ul li a').removeClass('active'); // Remove active class from all links
       $(this).addClass('active'); // Add active class to clicked link
     });
-  });
-});
-
-$(function () {
-  $('a').on('click', function () {
-    return false;
   });
 });

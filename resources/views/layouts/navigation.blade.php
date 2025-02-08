@@ -5,16 +5,17 @@
             <!-- ユーザー情報の表示 -->
             <!-- <div id=""> -->
             <div class="menu-group">
-                <div class="user-info">
+                <!-- <div class="user-info">
                     <p>{{ Auth::user()->username }}さん</p>
-                </div>
+                </div> -->
                 <!-- </div> -->
 
                 <!-- アコーディオンメニューの追加 -->
 
                 <div class="accordion-menu">
                     <button class="menu-toggle">
-                        <span class="arrow">&#9660;</span>
+                        <p>{{ Auth::user()->username }}さん</p>
+                        <span class="arrow">&#8548;</span>
                     </button>
                     <div class="menu-content">
                         <ul>
