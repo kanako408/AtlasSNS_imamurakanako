@@ -9,9 +9,11 @@ $(function () {
     var post_id = $(this).attr('post_id');
 
     // 取得した投稿内容をモーダルの中身へ渡す
-    $('.modal_post').text(post);
+    $('.modal_post').val(post); // ← .text() ではなく .val() に修正
     // 取得した投稿のidをモーダルの中身へ渡す
     $('.modal_id').val(post_id);
+
+    console.log("post:", post, "post_id:", post_id); // デバッグ用
     return false;
   });
 
@@ -37,14 +39,21 @@ $(function () {
     $('.js-delete-modal').fadeOut();
   });
 
-  // 削除ボタンの確認メッセージ
-  $('.js-delete-confirm').on('click', function (event) {
-    var confirmDelete = confirm("本当に削除しますか？");
-    if (!confirmDelete) {
-      event.preventDefault(); // キャンセルした場合はフォーム送信を中断
-      $('.js-delete-modal').fadeOut(); // モーダルを閉じる
-    }
+  // 削除ボタンが押されたら確認メッセージなしで削除し、ページをリロード
+  $('.js-delete-confirm').on('click', function () {
+    $('.js-delete-modal').fadeOut(); // モーダルを閉じる
+    setTimeout(function () {
+      location.reload(); // 1秒後にページをリロード
+    }, 1000);
   });
+  // 削除ボタンの確認メッセージ
+  // $('.js-delete-confirm').on('click', function (event) {
+  //   var confirmDelete = confirm("本当に削除しますか？");
+  //   if (!confirmDelete) {
+  //     event.preventDefault(); // キャンセルした場合はフォーム送信を中断
+  //     $('.js-delete-modal').fadeOut(); // モーダルを閉じる
+  //   }
+  // });
 
   $(document).ready(function () {
     // Toggle accordion menu

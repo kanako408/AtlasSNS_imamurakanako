@@ -88,17 +88,20 @@
 
         <!-- 削除確認モーダル -->
         <div class="modal js-delete-modal">
-            <div class="modal__bg js-delete-modal-close"></div>
-            <div class="modal__content">
-                <p>本当にこの投稿を削除しますか？</p>
+            <div class="delete-modal__bg js-delete-modal-close"></div>
+            <div class="delete-modal__content">
+                <p>この投稿を削除します。よろしいですか。</p>
                 <form id="deleteForm" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="confirm-delete-button">削除する</button>
+                    <div>
+                        <button type="submit" class="btn btn-primary js-delete-confirm">ＯＫ</button>
                 </form>
-                <button class="js-delete-modal-close">キャンセル</button>
+                <button type="button" class="js-delete-modal-close">キャンセル</button>
             </div>
         </div>
     </div>
+    </div>
+    <!-- </div> -->
 
 </x-login-layout>

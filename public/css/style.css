@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-html {}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -250,6 +250,15 @@ textarea.form-control {
     /* 中央寄せ */
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* ボタンを中央揃え */
+    gap: 10px;
+    /* ボタン間のスペース */
+}
+
+
 .post-form .content {
     flex-grow: 1;
     /* 投稿フォームが親要素の幅全体を占めるようにする */
@@ -315,7 +324,7 @@ button img {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    /* margin-bottom: 1rem; */
+    margin-bottom: 1rem;
     border-bottom: 1px solid #ccc;
     padding: 1rem 0;
 }
@@ -497,4 +506,39 @@ button img {
 
 .hide-img {
     display: none;
+}
+
+/* 投稿削除モーダル */
+.modal__bg {
+    background: rgba(0, 0, 0, 0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+
+.delete-modal__content {
+    background: #fff;
+    padding: 20px;
+    width: 40%;
+    /* border-radius: 8px; */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+
+.js-delete-modal-close {
+    color: #404040;
+    background-color: #ffffff;
+    border-color: #404040;
+    border-radius: 8px;
+    padding: 7px 6px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.delete-modal__content div {
+    float: right;
 }

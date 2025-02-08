@@ -13,6 +13,10 @@ class PostsController extends Controller
         // バリデーション
         $request->validate([
             'content' => 'required|string|min:1|max:150',
+        ], [
+            'content.required' => '入力してください。',
+            'content.min' => '投稿は１文字以上でなければなりません。',
+            'content.max' => '投稿は150文字以下でなければなりません。',
         ]);
 
         // 投稿の登録処理
@@ -65,6 +69,11 @@ class PostsController extends Controller
     // 投稿更新
     public function update(Request $request)
     {
+        // バリデーションを追加
+        $request->validate([
+            'upPost' => 'required|string|min:1|max:150',
+        ]);
+
         $id = $request->input('Id');
         $up_post = $request->input('upPost');
 
