@@ -1,12 +1,21 @@
 <x-login-layout>
 
-
+    <!-- バリデーションエラーメッセージの表示 -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <!-- 投稿フォーム -->
 
     <div class="post-form">
         <!-- ログインユーザーのアイコンを表示 -->
         <!-- <img src="{{ Auth::user()->icon_path ?? '/path/to/default/icon.png' }}" alt="ユーザーアイコン" class="user-icon"> -->
-        <div><img src="{{ Auth::user()->getIconUrlAttribute() }}"
+        <div><img src="{{ Auth::user()->getIconUrlAttribute() ?? asset('images/icon1.png')}}"
                 alt="{{ Auth::user()->username }}"
                 class="user-icon"></div>
         <!-- 投稿フォーム -->
@@ -21,13 +30,14 @@
         </div>
 
         <!-- 投稿ボタン（画像） -->
-        <div><button type="submit" class="post-button">
+        <div class="post-action"><button type="submit" class="post-button">
                 <img src="/images/post.png" alt="投稿" class="post-image">
             </button>
             </form>
         </div>
     </div>
 
+    <!-- <div class="divider"></div> -->
 
     <div class="post-list">
         @foreach($posts as $post)
@@ -35,7 +45,7 @@
             <div class="post-item post-block">
                 <!-- ユーザーアイコン -->
                 <figure>
-                    <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+                    <img src="{{ $post->user->getIconUrlAttribute() ?? asset('images/icon1.png') }}"
                         alt="{{ $post->user->username }}"
                         class="user-icon">
                 </figure>
@@ -74,7 +84,6 @@
             <div class="modal__bg js-modal-close"></div>
             <div class="modal__content">
                 <form action="{{ route('update') }}" method="POST">
-
                     <textarea name="upPost" class="modal_post" value=""></textarea>
                     <input type="hidden" name="Id" class="modal_id" value="">
                     <button type="submit">
@@ -85,6 +94,8 @@
                 <!-- <a class="js-modal-close" href="">閉じる</a> -->
             </div>
         </div>
+
+
 
         <!-- 削除確認モーダル -->
         <div class="modal js-delete-modal">
@@ -105,3 +116,30 @@
     <!-- </div> -->
 
 </x-login-layout>
+
+
+<!-- 編集モーダルの中身 ★-->
+<!-- <div class="modal js-modal @if ($errors->has('upPost')) open @endif">
+    <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+        <form action="{{ route('update') }}" method="POST">
+            @csrf
+            @method('PATCH')
+
+            <! バリデーションエラーメッセージ -->
+<!-- @if ($errors->has('upPost'))
+            <p class="error-message" style="color: red;">{{ $errors->first('upPost') }}</p>
+            @endif -->
+
+<!-- 投稿内容 -->
+<!-- <textarea name="upPost" class="modal_post" required maxlength="150">
+            {{ old('upPost') }}
+            </textarea>
+            <input type="hidden" name="Id" class="modal_id" value="{{ old('Id') }}"> -->
+
+<!-- <button type="submit">
+                <img src="/images/edit.png" alt="更新ボタン">
+            </button>
+        </form>
+    </div>
+</div> -->

@@ -1,13 +1,17 @@
 <x-login-layout>
   <!-- ユーザー情報 -->
   <div class="other-profile">
-    <div><img src="{{ $user->getIconUrlAttribute()}}" alt="{{ $user->username }}" class="user-icon">
+    <div><img src="{{ $user->getIconUrlAttribute()?? asset('images/icon1.png')}}" alt="{{ $user->username }}" class="user-icon">
+    </div>
+    <!-- <div class="other-profile-item"> -->
+    <div>
+      <h1>ユーザー名</h1>
+      <h1>自己紹介</h1>
     </div>
     <div>
-      <h1>ユーザー名 {{ $user->username }}</h1>
-      <h1>自己紹介 {{ $user->bio }}</h1>
+      <h1>{{ $user->username }}</h1>
+      <h1>{{ $user->bio }}</h1>
     </div>
-
     <!--ボタンを表示 -->
     <div>
       <form action="{{ route('follow.toggle', ['id' => $user->id]) }}" method="POST">
@@ -16,24 +20,12 @@
         <button type="submit" class="btn btn-danger">フォロー解除</button>
         @else
         <button type="submit" class="btn btn-primary">フォローする</button>
-        @endif</button>
+        @endif
       </form>
     </div>
   </div>
-  <!-- <div class="follow-button">
-      @if (Auth::user()->follows()->where('followed_id', $user->id)->exists())
-      <form action="{{ route('unfollow', $user->id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">フォロー解除</button>
-      </form>
-      @else
-      <form action="{{ route('follow', $user->id) }}" method="POST">
-        @csrf
-        <button type="submit" class="btn btn-primary">フォローする</button>
-      </form> -->
-  @endif
-  </div>
+
+
 
   <!-- 投稿一覧 -->
   <div class="post-list">
@@ -42,10 +34,11 @@
       <div class="post-item post-block">
         <!-- ユーザーアイコン -->
         <figure>
-          <a href="{{ route('user-profile', $post->user->id) }}">
+          <img src="{{ $user->getIconUrlAttribute()?? asset('images/icon1.png')}}" alt="{{ $user->username }}" class="user-icon">
+          <!-- <a href="{{ route('user-profile', $post->user->id) }}">
             <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
               alt="{{ $post->user->username }}"
-              class="user-icon"></a>
+              class="user-icon"></a> -->
         </figure>
 
         <!-- 投稿一覧 -->

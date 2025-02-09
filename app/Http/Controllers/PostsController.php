@@ -14,9 +14,10 @@ class PostsController extends Controller
         $request->validate([
             'content' => 'required|string|min:1|max:150',
         ], [
-            'content.required' => '入力してください。',
-            'content.min' => '投稿は１文字以上でなければなりません。',
-            'content.max' => '投稿は150文字以下でなければなりません。',
+            'content.required' => '投稿内容は必須です。',
+            'content.string' => '投稿内容は文字列でなければなりません。',
+            'content.min' => '投稿内容は1文字以上でなければなりません。',
+            'content.max' => '投稿内容は150文字以下でなければなりません。',
         ]);
 
         // 投稿の登録処理
@@ -67,12 +68,22 @@ class PostsController extends Controller
     //     return view('posts.index');
     // }
     // 投稿更新
-    public function update(Request $request)
+    public function update(Request $request,)
     {
         // バリデーションを追加
         $request->validate([
             'upPost' => 'required|string|min:1|max:150',
+        ], [
+            'upPost.required' => '投稿内容は必須です。',
+            'upPost.string' => '投稿内容は文字列でなければなりません。',
+            'upPost.min' => '投稿内容は1文字以上でなければなりません。',
+            'upPost.max' => '投稿内容は150文字以下でなければなりません。',
         ]);
+
+        // // 投稿の更新★
+        // $post->update([
+        //     'post' => $request->input('upPost'),
+        // ]);
 
         $id = $request->input('Id');
         $up_post = $request->input('upPost');

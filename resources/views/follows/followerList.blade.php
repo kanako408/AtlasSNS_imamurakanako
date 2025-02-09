@@ -9,7 +9,7 @@
       @foreach ($followers as $follower)
       <!-- プロフィールページへ遷移するリンク -->
       <a href="{{ route('user-profile', $follower->id) }}">
-        <img src="{{ $follower->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+        <img src="{{ $follower->getIconUrlAttribute() ?? asset('images/icon1.png') }}"
           alt="{{ $follower->username }}"
           class="user-icon">
       </a>
@@ -25,7 +25,7 @@
         <!-- ユーザーアイコン（プロフィールページへのリンク） -->
         <figure>
           <a href="{{ route('user-profile', $post->user->id) }}">
-            <img src="{{ $post->user->getIconUrlAttribute() ?? asset('storage/icon1.png') }}"
+            <img src="{{ $post->user->getIconUrlAttribute() ?? asset('images/icon1.png') }}"
               alt="{{ $post->user->username }}"
               class="user-icon">
           </a>
@@ -40,7 +40,8 @@
           <!-- 投稿内容 -->
           <div>{{ $post->post }}</div>
         </div>
-        <div>
+        <!-- 投稿日時 -->
+        <div class="post-date">
           <div>{{ $post->created_at->format('Y-m-d H:i') }}</div>
         </div>
       </div>

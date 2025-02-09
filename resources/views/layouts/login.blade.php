@@ -55,8 +55,10 @@
           </div>
         </div>
       </div>
-      <div class="d-grid gap-2">
-        <a href="{{ route('search') }}" class="btn btn-primary" role="button">ユーザー検索</a>
+      <div class="divider"></div>
+      <!-- </div> -->
+      <div class="user-search">
+        <a href="{{ route('search') }}" class="btn btn-primary">ユーザー検索</a>
       </div>
 
     </div>

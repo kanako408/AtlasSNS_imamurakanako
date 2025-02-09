@@ -49,7 +49,7 @@ class User extends Authenticatable
         // asset() 関数は public ディレクトリを基準としたURLを生成
         return $this->icon_image
             ? asset('storage/' . $this->icon_image)
-            : asset('storage/icon1.png');
+            : asset('images/icon1.png'); // デフォルト画像
     }
     // followsリレーション: ユーザーがフォローしているユーザーを取得する多対多リレーション。
     public function follows()

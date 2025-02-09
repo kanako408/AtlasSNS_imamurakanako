@@ -17,6 +17,11 @@ $(function () {
     return false;
   });
 
+  // // バリデーションエラー時に該当のモーダルを開く
+  //   if ($('.js-modal').hasClass('open')) {
+  //       $('.js-modal').fadeIn();
+  //   }
+
   // 背景部分や閉じるボタン(js-modal-close)が押されたら発火
   $('.js-modal-close').on('click', function () {
     // モーダルの中身(class="js-modal")を非表示

@@ -25,7 +25,7 @@
     <div class="profile-list">
       <!-- <div class="update-item"> -->
       <!-- ログインユーザーのアイコン -->
-      <img src="{{ Auth::user()->getIconUrlAttribute() }}"
+      <img src="{{ Auth::user()->getIconUrlAttribute()?? asset('images/icon1.png')  }}"
         alt="{{ Auth::user()->username }}"
         class="update-user-icon">
 
@@ -70,15 +70,20 @@
 
         {{-- アイコン画像 --}}
         <div class="update-form-group">
-          <label for="icon_image">アイコン画像</label>
-          <input type="file" name="icon_image" id="icon_image" class="form-control">
+          <label>アイコン画像</label>
+          <input type="file" name="icon_image" id="icon_image" class="form-control hidden-input">
+          <!-- <input type="file" name="icon_image" id="icon_image" class="form-control"> -->
+          <label for="icon_image" class="custom-file-label">
+            <p>ファイルを選択</p>
+          </label>
+
           @if (Auth::user()->icon_image)
           <img src="{{ asset('storage/' . Auth::user()->icon_image) }}" alt="アイコン画像" class="img-thumbnail mt-2 hide-img" width="150">
           @endif
         </div>
 
         {{-- 更新ボタン --}}
-        <button type="submit" class="btn btn-danger">更新</button>
+        <button type="submit" class="profile-list-btn-danger">更新</button>
       </form>
     </div>
   </div>
