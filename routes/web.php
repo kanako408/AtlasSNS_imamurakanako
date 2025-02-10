@@ -77,4 +77,4 @@ Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name(
 
 // 編集（update）処理
 Route::post('update',  [PostsController::class, 'update'])->name('update');
-// Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update');
+// Route::patch('/posts/{post}', [PostsController::class, 'update'])->name('posts.update');★

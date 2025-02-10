@@ -17,7 +17,7 @@ $(function () {
     return false;
   });
 
-  // // バリデーションエラー時に該当のモーダルを開く
+  // // バリデーションエラー時に該当のモーダルを開く★
   //   if ($('.js-modal').hasClass('open')) {
   //       $('.js-modal').fadeIn();
   //   }

@@ -45,6 +45,7 @@
           <div class="d-grid gap-2">
             <a href="{{ route('follows.followList') }}" class="btn btn-primary" role="button">フォローリスト</a>
           </div>
+          <br>
           <!-- フォロワー数表示 -->
           <div style="display: flex; align-items: center; gap: 40px;">
             <p>フォロワー数</p>
@@ -53,6 +54,7 @@
           <div class="d-grid gap-2">
             <a href="{{ route('follower-list') }}" class="btn btn-primary" role="button">フォロワーリスト</a>
           </div>
+          <br>
         </div>
       </div>
       <div class="divider"></div>

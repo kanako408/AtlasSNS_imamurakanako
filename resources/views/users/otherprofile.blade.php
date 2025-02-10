@@ -5,12 +5,12 @@
     </div>
     <!-- <div class="other-profile-item"> -->
     <div>
-      <h1>ユーザー名</h1>
-      <h1>自己紹介</h1>
+      <h2>ユーザー名</h2>
+      <h2>自己紹介</h2>
     </div>
     <div>
-      <h1>{{ $user->username }}</h1>
-      <h1>{{ $user->bio }}</h1>
+      <h2>{{ $user->username }}</h2>
+      <h2>{{ $user->bio }}</h2>
     </div>
     <!--ボタンを表示 -->
     <div>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Storage;
+// ストレージ内の確認
 
 class User extends Authenticatable
 {
@@ -44,12 +46,24 @@ class User extends Authenticatable
     // これにより、ビューではそのまま {{ $user->icon_url }} を使用
     public function getIconUrlAttribute()
     {
+        // アイコン画像のパス
+        $filePath = 'public/' . $this->icon_image; // storage/app/public/ の中を確認するパス
+        $storagePath = 'storage/' . $this->icon_image; // 表示用のパス
+
+        // もし `icon_image` に値があり、かつ `storage/app/public/` にファイルが存在する場合
+        if (!empty($this->icon_image) && Storage::exists($filePath)) {
+            return asset($storagePath); // `storage/` 以下のURLを返す
+        }
+
+        // `icon_image` が空、またはファイルが存在しない場合、デフォルト画像を返す
+        return asset('images/icon1.png');
+
         // 存在する場合はその画像を表示
         // 存在しない場合（null や空文字）はデフォルト画像 default-icon.png を返す。
         // asset() 関数は public ディレクトリを基準としたURLを生成
-        return $this->icon_image
-            ? asset('storage/' . $this->icon_image)
-            : asset('images/icon1.png'); // デフォルト画像
+        // return $this->icon_image
+        //     ? asset('storage/' . $this->icon_image)
+        //     : asset('images/icon1.png'); // デフォルト画像
     }
     // followsリレーション: ユーザーがフォローしているユーザーを取得する多対多リレーション。
     public function follows()
